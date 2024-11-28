@@ -12,7 +12,13 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.display{
+background:rgba(161, 130, 146, 0.59);
+font-family:'Cabin', sans-serif;
+color: rgba(255, 255, 255, 1);
+font-weight: 600;
+ 
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

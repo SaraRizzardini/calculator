@@ -20,7 +20,7 @@ function App() {
 	  if(currentDisplay==0){
 	  setCurrentDisplay(key);   
   }else{
-	  currentDisplay.concat(key);
+ setCurrentDisplay(currentDisplay.concat(key));
   }
   };
   return (
