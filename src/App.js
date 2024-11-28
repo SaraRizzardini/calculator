@@ -33,9 +33,19 @@ function App() {
   else if(key === "C") {
       setCurrentDisplay(""); // Clear display
     } 
-  else{
- setCurrentDisplay(currentDisplay.concat(key));
-  }
+  else {
+      // Prevent starting with multiple operators
+      if (
+        ["+", "-", "*", "/"].includes(key) &&
+        ["+", "-", "*", "/"].includes(currentDisplay.slice(-1))
+      ) {
+        return;
+      }
+
+      setCurrentDisplay((prev) =>
+        prev === "0" ? key : prev.concat(key)
+      );
+    }
   };
   
   return (
