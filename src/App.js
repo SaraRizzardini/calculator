@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import React, { useEffect, useRef, useState } from "react";
 function App() {
-	 const [currentDisplay, setCurrentDisplay] = useState("0");
+	 const [currentDisplay, setCurrentDisplay] = useState("");
 	const numbers = {
     1: "one",
     2: "two",
@@ -15,14 +15,29 @@ function App() {
     7: "seven",
     8: "eight",
     9: "nine",
+	0:"zero",
+	".":"decimal",
+	"+":"adding",
+	"-":"substracting",
+  "*":"multiplying",
+  "/":"dividing"
   };
   const displayAdd=(key)=>{
-	  if(currentDisplay==0){
+	  if(currentDisplay === ""){
 	  setCurrentDisplay(key);   
-  }else{
+  }
+  else if(key === "="){
+	  const result = eval(currentDisplay);
+        setCurrentDisplay(result.toString());
+      } 
+  else if(key === "C") {
+      setCurrentDisplay(""); // Clear display
+    } 
+  else{
  setCurrentDisplay(currentDisplay.concat(key));
   }
   };
+  
   return (
      <div className="App">
       <center>
@@ -38,7 +53,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {["123", "456", "789"].map((row, rowIndex) => (
+                {["C/X","123-", "456+", "789","0.="].map((row, rowIndex) => (
                   <tr key={rowIndex}>
                     <th scope="row"></th>
                     {row.split("").map((key) => (
