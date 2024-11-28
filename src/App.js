@@ -19,15 +19,17 @@ function App() {
 	".":"decimal",
 	"+":"adding",
 	"-":"substracting",
-  "*":"multiplying",
-  "/":"dividing"
+  "X":"multiplying",
+  "/":"dividing",
+  "=":"equals"
   };
   const displayAdd=(key)=>{
 	  if(currentDisplay === ""){
 	  setCurrentDisplay(key);   
   }
   else if(key === "="){
-	  const result = eval(currentDisplay);
+	   let displayToEvaluate = currentDisplay.replace(/X/g, "*");
+	  const result = eval(displayToEvaluate);
         setCurrentDisplay(result.toString());
       } 
   else if(key === "C") {
@@ -51,8 +53,22 @@ function App() {
   return (
      <div className="App">
       <center>
-        <div className="calculator d-flex flex-column border border-5">
-          <div className="p-2" style={{ width: "50%", height: "auto" }}>
+        <div className="calculator d-flex flex-column" style={{ width: "50%", height: "auto"}}>
+          <div
+            className="p-2"
+            style={{ width: "50%", height: "auto",  backgroundColor:"rgba(0,0,0,0.9)" }}
+          >
+            <div
+              className="display rounded-pill mb-3 p-2  text-light"
+              style={{ textAlign: "right", minHeight: "50px" }}
+            >
+              {currentDisplay}
+            </div>
+			</div>
+			<div
+            className="p-2"
+            style={{ width: "50%", height: "auto",  backgroundColor:"rgba(0,0,0,0.9)" }}
+          >
             <table className="table table-dark">
               <thead>
                 <tr>
@@ -63,7 +79,7 @@ function App() {
                 </tr>
               </thead>
               <tbody>
-                {["C/X","123-", "456+", "789","0.="].map((row, rowIndex) => (
+                {["C/","123-", "456+", "789X","0.="].map((row, rowIndex) => (
                   <tr key={rowIndex}>
                     <th scope="row"></th>
                     {row.split("").map((key) => (
@@ -83,11 +99,7 @@ function App() {
               </tbody>
             </table>
           </div>
-		  <div className="p-2" style={{width:"50%", height:'auto', backgroundColor:"rgba(0,0,0,0.9)"}}>
-		  <div className="display rounded-pill" style={{top:"50%", height:'auto'}}>{currentDisplay}</div>
-</div>
-
-        </div>
+		  </div>
       </center>
     </div>
   );

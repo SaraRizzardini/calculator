@@ -17,7 +17,44 @@ background:rgba(161, 130, 146, 0.59);
 font-family:'Cabin', sans-serif;
 color: rgba(255, 255, 255, 1);
 font-weight: 600;
- 
+}
+.calculator{
+ border-color: rgba(245, 40, 145, 0.8);
+background-color:rgba(161, 130, 146, 0.59);
+position: relative;
+	margin: 300px auto 0;
+	width: 100%;
+	height: auto;
+	background: linear-gradient(0deg, #000, #272727);
+}
+.calculator:before, .drum-machine:after {
+	content: '';
+	position: absolute;
+	left: -2px;
+	top: -2px;
+	background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
+		#0000ff, #00ff00,#ffff00, #ff0000);
+	background-size: 400%;
+	width: calc(100% + 4px);
+	height: calc(100% + 4px);
+	z-index: -1;
+	animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+	0% {
+		background-position: 0 0;
+	}
+	50% {
+		background-position: 400% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+
+.calculator:after {
+	filter: blur(50px);
 }
 .App-header {
   background-color: #282c34;
@@ -32,6 +69,9 @@ font-weight: 600;
 
 .App-link {
   color: #61dafb;
+}
+.btn#equals{
+width:200%
 }
 
 @keyframes App-logo-spin {
